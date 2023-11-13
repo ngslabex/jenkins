@@ -3,9 +3,11 @@ version: '3.7'
 services:
   s_jenkins:
     container_name: c_jenkins
-    image: ersankose/jenkinswithdocker
+    image: ersankose/myjenkins
     ports:
       - 85:8080
+      - 50000:50000
     volumes:
-      - $PWD/jenkins_data:/var/jenkins_home
+      - $HOME/jenkins:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
+      - $HOME/jenkins/jenkins-docker-certs:/certs/client:ro
